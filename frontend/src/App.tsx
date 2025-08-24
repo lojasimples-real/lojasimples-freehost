@@ -17,7 +17,7 @@ import { io } from "socket.io-client";
 import ResetPassword from "./pages/ResetPassword";
 const queryClient = new QueryClient();
 
-const socket = io("https://app.lojasimples.site");
+const socket = io(import.meta.env.VITE_SOCKET_URL);
 
 const App = () => (
  <AuthProvider>
