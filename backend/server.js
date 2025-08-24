@@ -2,8 +2,6 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
-const fs = require('fs');
-const https = require('https');
 const socketIo = require('socket.io');
 const billRoutes = require("./routes/billRoutes");
 const reportRoutes = require("./routes/reportRoutes");
@@ -43,10 +41,11 @@ const privateKey = fs.readFileSync('/etc/letsencrypt/live/app.lojasimples.site/p
 const certificate = fs.readFileSync('/etc/letsencrypt/live/app.lojasimples.site/fullchain.pem', 'utf8');
 const ca = fs.readFileSync('/etc/letsencrypt/live/app.lojasimples.site/chain.pem', 'utf8');
 const credentials = { key: privateKey, cert: certificate, ca: ca };
-const server = https.createServer(credentials, app);
+const server = require('http').createServer(app);
+
 const io = socketIo(server, {
   cors: {
-    origin: 'https://app.lojasimples.site',
+    origin: 'https://lojasimples.netlify.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
   }
 });
