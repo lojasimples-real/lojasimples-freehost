@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://app.lojasimples.site/api',
+    baseURL: import.meta.env.VITE_API_BASE_URL,
     timeout: 5000, // Increase timeout
 });
 
