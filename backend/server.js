@@ -37,7 +37,7 @@ const server = require('http').createServer(app);
 
 const io = socketIo(server, {
   cors: {
-    origin: "*",
+    origin: ["https://lojasimples.netlify.app", "http://localhost:3000", "http://localhost:5173"],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
   }
 });
