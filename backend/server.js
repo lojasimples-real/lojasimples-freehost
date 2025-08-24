@@ -14,10 +14,7 @@ app.use(express.json());
 
 const brasiliaTime = moment().tz("America/Sao_Paulo").toDate();
 
-app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
-}));
+app.use(cors());
 
 const authRoutes = require('./routes/authRoutes');
 const clientRoutes = require('./routes/clientRoutes');
@@ -36,15 +33,11 @@ app.use('/api', webhookRoutes);
 const passwordRoutes = require('./routes/passwordRoutes');
 app.use('/api', passwordRoutes);
 
-
 const server = require('http').createServer(app);
 
 const io = socketIo(server, {
   cors: {
-    origin: (origin, callback) => {
-      console.log('Socket.IO origem permitida:', origin);
-      callback(null, true); // permite todas as origens
-    },
+    origin: "*",
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
   }
 });
