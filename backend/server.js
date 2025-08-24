@@ -36,16 +36,15 @@ app.use('/api', webhookRoutes);
 const passwordRoutes = require('./routes/passwordRoutes');
 app.use('/api', passwordRoutes);
 
-// Lendo os certificados SSL gerados pelo Certbot
-const privateKey = fs.readFileSync('/etc/letsencrypt/live/app.lojasimples.site/privkey.pem', 'utf8');
-const certificate = fs.readFileSync('/etc/letsencrypt/live/app.lojasimples.site/fullchain.pem', 'utf8');
-const ca = fs.readFileSync('/etc/letsencrypt/live/app.lojasimples.site/chain.pem', 'utf8');
-const credentials = { key: privateKey, cert: certificate, ca: ca };
+
 const server = require('http').createServer(app);
 
 const io = socketIo(server, {
   cors: {
-    origin: 'https://lojasimples.netlify.app',
+    origin: (origin, callback) => {
+      console.log('Socket.IO origem permitida:', origin);
+      callback(null, true); // permite todas as origens
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
   }
 });
