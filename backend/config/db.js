@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const dbURI = "mongodb+srv://infosales:kauakaua@lojasimples.2dcnj.mongodb.net/lojasimples?retryWrites=true&w=majority&appName=lojasimples";
+const dbURI = process.env.MONGO_URI;
 
 const connectDB = async () => {
   try {
