@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { User } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
-import { ResponsiveTable } from '@/components/layout/Mobile';
 
 const Login = () => {
   const navigate = useNavigate();

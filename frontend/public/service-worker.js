@@ -4,9 +4,7 @@ const CACHE_NAME = "loja-simples-v1";
 const urlsToCache = [
   "/",
   "/index.html",
-  "/manifest.json",
-  "/logo192.png",
-  "/logo512.png"
+  "/manifest.json"
 ];
 
 self.addEventListener("install", (event) => {

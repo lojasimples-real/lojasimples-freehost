@@ -5,7 +5,7 @@ const PrivateRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated, loading } = useAuth();
 
   if (loading) {
-    return <div>Carregando...</div>; // Ou um spinner de carregamento
+    return <div>Carregando...</div>;
   }
 
   if (!isAuthenticated) {

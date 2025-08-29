@@ -3,14 +3,12 @@ import { SearchBar } from "@/components/dashboard/SearchBar";
 import { StatsCard } from "@/components/dashboard/StatsCard";
 import { ClientsTable } from "@/components/dashboard/ClientsTable";
 import { Users, AlertCircle, DollarSign, UserPlus } from "lucide-react";
-import { NewClientModal } from '@/components/clients/NewClientModal';
 import { useState } from 'react';
 import { useDashboardData } from '@/hooks/useDashboardData';
 import { useStoreSettings } from "@/hooks/useStoreSettings";
 import FilterDropdown, { FilterOption } from "@/components/dashboard/FilterDropdown";
 
 const Index = () => {
-  const [isNewClientModalOpen, setIsNewClientModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [filterOption, setFilterOption] = useState<FilterOption>("todos");
   const { data, error, isLoading } = useDashboardData();
@@ -43,16 +41,9 @@ const Index = () => {
         <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
           <div className="w-full sm:w-96">
             <SearchBar onSearch={setSearchTerm} />
-            </div>
-            <div className="flex gap-2 w-full sm:w-auto">
+          </div>
+          <div className="flex gap-2 w-full sm:w-auto">
             <FilterDropdown onFilterChange={setFilterOption} />
-            <button 
-              onClick={() => setIsNewClientModalOpen(true)}
-              className="flex-1 sm:flex-initial px-4 py-2 bg-primary hover:bg-primary-hover text-white rounded-lg flex items-center justify-center gap-2 transition-colors"
-            >
-              <UserPlus className="w-5 h-5" />
-              Novo Cliente
-            </button>
           </div>
         </div>
 
@@ -82,11 +73,6 @@ const Index = () => {
           </h2>
           <ClientsTable clients={filteredClients} />
         </div>
-
-        <NewClientModal
-        isOpen={isNewClientModalOpen}
-          onClose={() => setIsNewClientModalOpen(false)}
-        />
       </div>
     </Layout>
   );
