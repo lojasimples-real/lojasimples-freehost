@@ -1,5 +1,6 @@
 import animate from "tailwindcss-animate";
 
+/** @type {import('tailwindcss').Config} */
 export default {
   darkMode: ["class"],
   content: [
@@ -8,7 +9,6 @@ export default {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
-  prefix: "",
   theme: {
     container: {
       center: true,
@@ -25,24 +25,20 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#1A73E9",
-          hover: "#4338CA",
-          foreground: "#FFFFFF",
+          DEFAULT: "hsl(var(--primary))",
+          foreground: "hsl(var(--primary-foreground))",
         },
         success: {
-          DEFAULT: "#10B981",
-          hover: "#059669",
-          foreground: "#FFFFFF",
+          DEFAULT: "hsl(var(--success))",
+          foreground: "hsl(var(--success-foreground))",
         },
         warning: {
-          DEFAULT: "#F59E0B",
-          hover: "#D97706",
-          foreground: "#FFFFFF",
+          DEFAULT: "hsl(var(--warning))",
+          foreground: "hsl(var(--warning-foreground))",
         },
         danger: {
-          DEFAULT: "#EF4444",
-          hover: "#DC2626",
-          foreground: "#FFFFFF",
+          DEFAULT: "hsl(var(--danger))",
+          foreground: "hsl(var(--danger-foreground))",
         },
         muted: {
           DEFAULT: "hsl(var(--muted))",
@@ -98,4 +94,4 @@ export default {
     },
   },
   plugins: [animate],
-}
+};
