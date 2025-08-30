@@ -55,16 +55,4 @@
   .main-content {
     @apply flex-1 p-6 pt-16;
   }
-
-  .bg-background {
-    background-color: var(--background);
-  }
-
-  .text-foreground {
-    color: var(--foreground);
-  }
-
-  .border-border {
-    border-color: var(--border);
-  }
 }
